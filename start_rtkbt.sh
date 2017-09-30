@@ -8,7 +8,7 @@
 if [ "$1" = "" ]
 then
     # Find the Serial TTY attached to the Bluetooth device
-    TTY=`ls /sys/devices/platform/80860F0A:00/tty/`
+    TTY=`dmesg | grep ttyS | grep -m 1 MMIO | cut -b 29-33`
 else
     # Use the TTY device passed via command line
     TTY=$1
