@@ -25,7 +25,7 @@ Current dirver includes required patches:
 - patches/
   - 0001-Add-Realtek-RTL8723BS-Bluetooth-to-rfkill-gpio.patch
 
-**I didn't apply this patch.**
+**Patched in [yiping-huang/arch_on_hi10plus](https://github.com/yiping-huang/arch_on_hi10plus), though everything seems ok without the patch.**
 
 ### Firmware
 Verified against Linux kernel 4.9.13
