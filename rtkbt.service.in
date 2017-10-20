@@ -1,0 +1,11 @@
+[Unit]
+Description=Realtek RTL8723BS bluetooth service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=@BINDIR@/rtkbt.sh
+
+[Install]
+WantedBy=graphical.target
+

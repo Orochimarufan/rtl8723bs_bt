@@ -36,6 +36,7 @@ modules.builtin
 *.porig
 *.orig
 rtk_hciattach
+rtkbt.service
 
 #
 # Top-level generic files
