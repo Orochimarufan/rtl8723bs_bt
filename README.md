@@ -1,10 +1,10 @@
 # RTL8723BS Bluetooth
 Realtek UART HCI Bluetooth driver
 
-**This is essentially [sorhtyre/rtl8723bs_bt](https://github.com/sorhtyre/rtl8723bs_bt) branch [8b5a1cd6](https://github.com/sorhtyre/rtl8723bs_bt/tree/8b5a1cd6) with old TTY selection.**
+This is essentially [sorhtyre/rtl8723bs_bt](https://github.com/sorhtyre/rtl8723bs_bt) branch [8b5a1cd6](https://github.com/sorhtyre/rtl8723bs_bt/tree/8b5a1cd6) with modified scripts and systemd service
 
 Tested on:
-- Chuwi Hi10 Plus
+- Chuwi Hi10 Pro
 
 The BayTrail UART HCI drivers require patches under the 4.9 Linux kernel.
 
@@ -17,15 +17,9 @@ protocol support.
 - CONFIG_BT_HCIUART=m
 - CONFIG_BT_HCIUART_3WIRE=y
 
-**I use kernel compiled from [danielotero/linux-on-hi10](https://github.com/danielotero/linux-on-hi10), which already has these lines.**
+I use kernel compiled from [danielotero/linux-on-hi10](https://github.com/danielotero/linux-on-hi10), which already has these lines.
 
-### Patches
-Verified against Linux kernel 4.9.13
-Current dirver includes required patches:
-- patches/
-  - 0001-Add-Realtek-RTL8723BS-Bluetooth-to-rfkill-gpio.patch
-
-**Patched in [yiping-huang/arch_on_hi10plus](https://github.com/yiping-huang/arch_on_hi10plus), though everything seems ok without the patch.**
+I don't use any additional kernel patches
 
 ### Firmware
 Verified against Linux kernel 4.9.13
@@ -36,11 +30,18 @@ Current dirver includes required firmwares:
 
 
 ### Install
+#### Arch:
 ```
- make
- sudo make install
- sudo cp ./system.d/. /etc/systemd/system
- systemctl enable rtk_bt.service
- sudo modprobe btusb
- systemctl enable bluetooth.service
+$ cd <repo root>
+$ makepkg -i
+$ sudo systemctl enable --now bluetooth rtkbt
  ```
+ 
+#### Other:
+```
+$ cd <repo root>
+$ make
+$ sudo make install
+$ sudo systemctl enable --now bluetooth rtkbt
+```
+See the top of Makefile for the available install options
